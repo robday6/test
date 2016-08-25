@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1;">
+  <link rel="icon shortcut" href="/assets/favicon.png">
+  <title>Kilmc | Portfolio</title>
+  <link rel="stylesheet" href="/style/css/portfolio.css" media="all">
+  <script src="/scripts/avenir.js"></script>
+  <script src="//code.jquery.com/jquery-latest.min.js"></script>
+  <script src="/scripts/jquery.event.move.js"></script>
+  <script src="/scripts/jquery.event.swipe.js"></script>
+  <script src="/scripts/unslider.min.js"></script>
+  <script src="/scripts/portfolio.js"></script>
+  <link href="/fonts/ss-standard/ss-standard.css" rel="stylesheet">
+</head>
+<body>
+  <section class="top">
+    <div class="inner">
+      <h1 class="title">Kilian McMahon</h1>
+      <p class="sub-title">Frontend Portfolio</p>
+    </div>
+  </section>
+
+  {% for section in pages %}
+    <section class="{{section.slug}}">
+      <div class="inner">
+        <h2 class="title">{{section.title}}</h2>
+        {{section.body}}
+      </div>
+      {% if section.meta['responsibilities']? %}
+        <div class="meta links">
+          <h3>Responsible for:</h3>
+          {{ section.meta['responsibilities'] | markdown }}
+        </div>
+      {% endif %}
+      {% if section.meta['links']? %}
+        <div class="meta links">
+          <h3>Links:</h3>
+          {{ section.meta['links'] | markdown }}
+        </div>
+      {% endif %}
+      <div class="{{section.slug}}-slides">
+        <ul>
+          {% for slide in section.assets %}
+            <li><img src="{{slide.url}}"></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="arrow-wrap">
+        <a class="{{section.slug}}-arrow prev ss-navigateleft"><b>Previous slide</b></a>
+        <a class="{{section.slug}}-arrow next ss-navigateright"><b>Next slide</b></a>
+      </div>
+    </section>
+  {% endfor %}
+
+  <section class="cv">
+    <div class="inner">
+      <h2>Employment</h2>
+      <ul class="work">
+        <li class="job">
+          <h3>Tito</h3>
+          <p>2012 – present</p>
+          Designer
+          <h4>Role</h4>
+          <ul>
+            <li>UX/UI Design</li>
+            <li>Frontend Development</li>
+            <li>Print Design</li>
+          </ul>
+        </li>
+
+        <li class="job">
+          <h3>Úll</h3>
+          <p>2011 – present</p>
+          Art Director
+          <h4>Role</h4>
+          <ul>
+            <li>Branding</li>
+            <li>Site Design & Development</li>
+            <li>Print Design</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>Skills</h2>
+      <div class="experience">
+        <div class="skill">
+          <h3>Experienced with</h3>
+          <h4>Web</h4>
+          <p>HTML</p>
+          <p>CSS/SASS</p>
+          <p>Gifs</p>
+          <p>Twitter Bootstrap</p>
+          <p>Bourbon</p>
+          <p>Git & GitHub</p>
+          <h4>Print</h4>
+          <p>Prototyping</p>
+          <p>Production Management</p>
+          <h4>General</h4>
+          <p>Quoting Films</p>
+          <p>Air Drumming</p>
+        </div>
+
+        <div class="skill">
+          <h3>Familiar with</h3>
+          <h4>Web</h4>
+          <p>Liquid</p>
+          <p>Ruby on Rails</p>
+          <p>PHP</p>
+          <p>Javascript/jQuery</p>
+
+          <h4>Print</h4>
+          <p>Screenprinting</p>
+          <p>Book Binding</p>
+        </div>
+      </div>
+
+      <div class="contact">
+        <h2>Contact</h2>
+        <p>If you have any questions or would like to get in touch with me about some work, please do so via email or phone. Details below.</p>
+        <ul>
+          <li>
+            <h4>Email</h4>
+            <a href="mailto:work@kilmc.com">work@kilmc.com</a></li>
+          <li>
+            <h4>Phone:</h4>
+            <p>+353 86 080 9196</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
